@@ -38,12 +38,14 @@ def main_reparse():
                     bottom = shell_prism.bottom_facet
                     for pt in top.vertices:
                         fout.write('top ' +
-                                   str(pt.x) + str(pt.y) + str(pt.z) +
-                                   '\n')
+                                   str(pt.x) + ' ' + 
+                                   str(pt.y) + ' ' +
+                                   str(pt.z) + '\n')
                     for pt in bottom.vertices:
                         fout.write('bottom ' +
-                                   str(pt.x) + str(pt.y) + str(pt.z) +
-                                   '\n')
+                                   str(pt.x) + ' ' + 
+                                   str(pt.y) + ' ' +
+                                   str(pt.z) + '\n')
 
 
 if __name__ == '__main__':
