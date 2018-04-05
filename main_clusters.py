@@ -73,8 +73,8 @@ def main_clusters():
     # raw output
     # pprint(clusters_info)
     # pretty output
-    # pretty_print_clusters_info(clusters_info)
-    return clusters_info
+    pretty_print_clusters_info(clusters_info)
+    # return clusters_info
 
 
 def get_intersections(fname):
@@ -160,19 +160,24 @@ def pretty_print_clusters_info(clusters_info):
                    'cluster_x_len',
                    'cluster_y_len',
                    'cluster_z_len']
+    print('tau  N cl_i\tcl_s\t x    y    z')
     for tau in taus:
         for N in Ns:
-            for attempt in range(5):
+            for attempt in range(1):#5):
                 entry = clusters_info[tau][N][attempt]
                 for cluster_number in range(len(entry['clusters'])):
                     cluster = entry['clusters'][cluster_number]
-                    print(tau, N,
-                          cluster_number,
-                          cluster['cluster_size'],
-                          cluster['cluster_x_len'],
-                          cluster['cluster_y_len'],
-                          cluster['cluster_z_len'])
-    return
+                    str_tau = ' ' * (3 - len(str(tau))) + str(tau)
+                    str_N = ' ' * (2 - len(str(N))) + str(N)
+                    cluster_size = (' ' * (2 - len(str(cluster['cluster_size']))) +
+                                    str(cluster['cluster_size']))
+                    print(str_tau, str_N,
+                          cluster_number, '\t',
+                          cluster_size, '\t',
+                          "%.2f" % cluster['cluster_x_len'],
+                          "%.2f" % cluster['cluster_y_len'],
+                          "%.2f" % cluster['cluster_z_len'])
+    return None
 
 
 if __name__ == '__main__':
